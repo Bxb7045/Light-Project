@@ -1,0 +1,68 @@
+//
+//  ViewController.swift
+//  bishrutLightProject
+//
+//  Created by Bishrut Bhattarai on 9/24/19.
+//  Copyright © 2019 Bishrut Bhattarai. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+    var whiteBlack = true
+    var firstRun = false
+    var redBlue = true
+    var greenYellow = true
+    @IBOutlet weak var label1: UILabel!
+    @IBOutlet weak var label2: UILabel!
+    @IBOutlet weak var label3: UILabel!
+  //  @IBOutlet weak var buttonChange: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateUI()
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    @IBAction func buttonPressed(_ sender: Any) {
+        updateUI()
+        whiteBlack = !whiteBlack
+    }
+    @IBAction func buttonTwo(_ sender: Any) {
+        redBlue.toggle()
+        if redBlue {
+            view.backgroundColor = .blue
+        } else {
+            view.backgroundColor = .red
+        }
+    }
+    @IBAction func greenBlue(_ sender: Any) {
+        greenYellow.toggle()
+        if greenYellow {
+            view.backgroundColor = .green
+        } else {
+            view.backgroundColor = .yellow
+        }
+    }
+    func updateUI (){
+        //**Sets text color to white by default
+        label1.textColor = .white
+        label2.textColor = .white
+        label3.textColor = .white
+        if whiteBlack && firstRun{
+            view.backgroundColor = .white
+            label1.textColor = .black
+            label2.textColor = .black
+            label3.textColor = .black
+        } else {
+            view.backgroundColor = .black
+        }
+        if !firstRun {
+            //**default background color
+            view.backgroundColor = UIColor(red: 0.9333, green: 0, blue: 1, alpha: 1)
+            firstRun = true
+        }
+    }
+}
+
+
